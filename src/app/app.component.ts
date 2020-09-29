@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import {EncryptService} from './services/encrypt.service';
 import {DecryptService} from './services/decrypt.service';
@@ -16,20 +15,36 @@ import {DecryptService} from './services/decrypt.service';
   ]
 })
 export class AppComponent implements OnInit {
-  title = 'WEB';
-  encryptForm: FormGroup;
+  title = '3DES - UCA';
   loading = false;
+  initialText: string;
+  encryptedText = '';
+  decryptedText = '';
 
-  constructor( private formBuilder: FormBuilder,
-               private toastr: ToastrService,
+  constructor( private toastr: ToastrService,
                private encryptService: EncryptService,
                private decryptService: DecryptService ) {}
 
    ngOnInit(): void {
-    this.encryptForm = this.formBuilder.group({
-      text: ['', Validators.required]
+    this.initialText = '';
+   }
+
+   Encrypt() {
+    this.encryptService.ENCRYPT({ text: this.initialText }).subscribe( res => {
+      if ( res.success ) {
+        this.toastr.success('Encriptado con 3DES');
+        this.encryptedText = res.data;
+      }
     });
    }
 
+  Decrypt() {
+    this.decryptService.DECRYPT({ text: this.encryptedText }).subscribe( res => {
+      if ( res.success ) {
+        this.toastr.success('3DES Desencriptado');
+        this.decryptedText = res.data;
+      }
+    });
+  }
 
 }
