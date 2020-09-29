@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import {EncryptService} from './services/encrypt.service';
+import {DecryptService} from './services/decrypt.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +15,21 @@ import { Component } from '@angular/core';
     '../assets/css/magnific-popup.css'
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'WEB';
+  encryptForm: FormGroup;
+  loading = false;
+
+  constructor( private formBuilder: FormBuilder,
+               private toastr: ToastrService,
+               private encryptService: EncryptService,
+               private decryptService: DecryptService ) {}
+
+   ngOnInit(): void {
+    this.encryptForm = this.formBuilder.group({
+      text: ['', Validators.required]
+    });
+   }
+
+
 }
