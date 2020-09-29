@@ -30,21 +30,36 @@ export class AppComponent implements OnInit {
    }
 
    Encrypt() {
-    this.encryptService.ENCRYPT({ text: this.initialText }).subscribe( res => {
-      if ( res.success ) {
-        this.toastr.success('Encriptado con 3DES');
-        this.encryptedText = res.data;
-      }
-    });
+    if (this.initialText === '') {
+      this.toastr.warning('Debe ingresar un texto');
+      this.encryptedText = '';
+      this.decryptedText = '';
+    } else {
+      this.encryptService.ENCRYPT({ text: this.initialText }).subscribe( res => {
+        if ( res.success ) {
+          this.toastr.success('Encriptado con 3DES');
+          this.encryptedText = res.data;
+        } else {
+          this.toastr.error('Ocurrió un error');
+        }
+      });
+    }
    }
 
   Decrypt() {
-    this.decryptService.DECRYPT({ text: this.encryptedText }).subscribe( res => {
-      if ( res.success ) {
-        this.toastr.success('3DES Desencriptado');
-        this.decryptedText = res.data;
-      }
-    });
+    if (this.initialText === '') {
+      this.toastr.warning('Debe ingresar un texto');
+      this.decryptedText = '';
+    } else {
+      this.decryptService.DECRYPT({ text: this.encryptedText }).subscribe( res => {
+        if ( res.success ) {
+          this.toastr.success('3DES Desencriptado');
+          this.decryptedText = res.data;
+        } else {
+          this.toastr.error('Ocurrió un error');
+        }
+      });
+    }
   }
 
 }
