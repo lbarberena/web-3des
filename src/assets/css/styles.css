@@ -39,7 +39,15 @@ Colors:
 - Text headers, navbar links - black #393939
 - Text body - black #626262
 ******************************************/
+.img-style{
+  flex-wrap: wrap;
+  min-width: 100px;
+  position: center;
+}
+
 .devmodal__overlay {
+  flex-wrap: wrap;
+  min-width: 300px;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -53,12 +61,16 @@ Colors:
 /* display the modal overlay when the input[type=radio] is checked */
 
 .devmodal__state:checked+.devmodal__overlay {
+  flex-wrap: wrap;
+  min-width: 300px;
   opacity: 1;
   animation: fade-in .4s;
   display: block;
 }
 
 .devmodal {
+  flex-wrap: wrap;
+  min-width: 300px;
   margin: 20px;
   width: 40%;
   border-radius: 10px;
@@ -74,6 +86,8 @@ Colors:
 }
 
 .devmodal__state:checked+.devmodal__overlay .devmodal {
+  flex-wrap: wrap;
+  min-width: 300px;
   margin-top: 50px;
   animation: scoot-up .2s;
   animation-timing-function: ease-out;
@@ -88,6 +102,8 @@ Colors:
 }
 
 .devmodal__overlay-close {
+  flex-wrap: wrap;
+  min-width: 300px;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -98,10 +114,14 @@ Colors:
 /* the input[type=radio] that's toggled when the label is clicked */
 
 .devmodal__state {
+  flex-wrap: wrap;
+  min-width: 300px;
   display: none;
 }
 /********************Modal N2******************/
 .modalMore__overlay {
+  flex-wrap: wrap;
+  min-width: 300px;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -115,14 +135,20 @@ Colors:
 /* display the modal overlay when the input[type=radio] is checked */
 
 .modalMore__state:checked+.modalMore__overlay {
+  flex-wrap: wrap;
+  min-width: 300px;
   opacity: 1;
   animation: fade-in .4s;
   display: block;
 }
 
 .modalMore {
+  flex-wrap: wrap;
+  min-width: 300px;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
   margin: 20px;
-  width: 70%;
+  width: 90%;
   border-radius: 10px;
   margin-top: 80px;
   padding: 40px 20px;
@@ -136,6 +162,8 @@ Colors:
 }
 
 .modalMore__state:checked+.modalMore__overlay .modalMore {
+  flex-wrap: wrap;
+  min-width: 300px;
   margin-top: 50px;
   animation: scoot-up .2s;
   animation-timing-function: ease-out;
@@ -150,6 +178,8 @@ Colors:
 }
 
 .modalMore__overlay-close {
+  flex-wrap: wrap;
+  min-width: 300px;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -160,6 +190,8 @@ Colors:
 /* the input[type=radio] that's toggled when the label is clicked */
 
 .modalMore__state {
+  flex-wrap: wrap;
+  min-width: 300px;
   display: none;
 }
 /******************************/
@@ -167,13 +199,15 @@ Colors:
 /******************************/
 body,
 html {
-    width: 100%;
-	height: 100%;
+  flex-wrap: wrap;
+  min-width: 300px;
+  width: 100%;
+  height: 100%;
 }
 
 body, p {
-	color: #626262;
-	font: 400 0.875rem/1.375rem "Raleway", sans-serif;
+  color: #626262;
+  font: 400 0.875rem/1.375rem "Raleway", sans-serif;
 }
 
 .p-large {
